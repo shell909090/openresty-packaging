@@ -1,0 +1,5 @@
+openresty-openssl (1.0.2j-1~xenial1) xenial; urgency=low
+
+  * Initial release
+
+ -- OpenResty Team <openresty-en@googlegroups.com>  Wed, 05 Oct 2016 00:49:03 +0800
