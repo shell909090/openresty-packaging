@@ -15,6 +15,13 @@ Description: The zlib compression library for use by Openresty ONLY
 Package: openresty-zlib-dev
 Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, openresty-zlib
 Description: Provides C header and static library for OpenResty's zlib library
  Provides C header and static library for OpenResty's zlib library.
+
+Package: openresty-zlib-dbg
+Section: debug
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, openresty-zlib
+Description: Debug symbols OpenResty's zlib library
+ Debug symbols OpenResty's zlib library

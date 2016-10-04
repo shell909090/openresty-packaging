@@ -17,3 +17,6 @@ override_dh_install:
 	rm -rf $DESTDIR/usr/local/openresty/zlib/share
 	rm -f $DESTDIR/usr/local/openresty/zlib/lib/*.la
 	rm -rf $DESTDIR/usr/local/openresty/zlib/lib/pkgconfig
+
+override_dh_strip:
+	dh_strip --dbg-package=openrestry-zlib-dbg
