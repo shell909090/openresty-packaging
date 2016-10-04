@@ -41,3 +41,6 @@ override_dh_install:
 	rm -f $DESTDIR/usr/local/openresty/pcre/lib/*pcrecpp*
 	rm -f $DESTDIR/usr/local/openresty/pcre/lib/*pcreposix*
 	rm -rf $DESTDIR/usr/local/openresty/pcre/lib/pkgconfig
+
+override_dh_strip:
+	dh_strip --dbg-package=openresty-pcre-dbg

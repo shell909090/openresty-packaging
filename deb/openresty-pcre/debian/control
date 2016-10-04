@@ -15,6 +15,13 @@ Description: Perl-compatible regular expression library for use by OpenResty ONL
 Package: openresty-pcre-dev
 Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, openresty-pcre
 Description: Development files for Perl-compatible regular expression library for use by OpenResty ONLY
  Development files for Perl-compatible regular expression library for use by OpenResty ONLY
+
+Package: openresty-pcre-dbg
+Section: debug
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, openresty-pcre
+Description: Debug symbols for Perl-compatible regular expression library for use by OpenResty ONLY
+ Debug symbols for Perl-compatible regular expression library for use by OpenResty ONLY
