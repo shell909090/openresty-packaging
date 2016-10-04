@@ -1,0 +1,20 @@
+Source: openresty-pcre
+Section: libs
+Priority: optional
+Maintainer: OpenResty Team <openresty-en@googlegroups.com>
+Build-Depends: debhelper (>= 9), autotools-dev
+Standards-Version: 3.9.8
+Homepage: http://zlib.net/
+
+Package: openresty-pcre
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Perl-compatible regular expression library for use by OpenResty ONLY
+ Perl-compatible regular expression library for use by OpenResty ONLY
+
+Package: openresty-pcre-dev
+Section: libdevel
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Development files for Perl-compatible regular expression library for use by OpenResty ONLY
+ Development files for Perl-compatible regular expression library for use by OpenResty ONLY
