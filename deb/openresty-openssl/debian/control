@@ -16,7 +16,7 @@ Description: OpenSSL library for use by OpenResty ONLY
 Package: openresty-openssl-dev
 Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, openresty-openssl, openresty-zlib-dev
+Depends: ${shlibs:Depends}, ${misc:Depends}, openresty-openssl
 Description: Development files for OpenResty's OpenSSL library
  Provides C header and static library for OpenResty's OpenSSL library.
 
