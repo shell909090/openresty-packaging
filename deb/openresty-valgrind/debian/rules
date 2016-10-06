@@ -9,7 +9,7 @@ export NJBS = `nproc`
 DESTDIR = $(CURDIR)/debian/tmp
 
 %:
-	dh $@ --parallel --with autotools-dev
+	dh $@ --parallel --with autotools-dev,systemd
 
 override_dh_auto_configure:
 	./configure \
