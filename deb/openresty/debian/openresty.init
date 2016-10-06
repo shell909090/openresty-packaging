@@ -12,8 +12,12 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DAEMON=/usr/local/openresty/nginx/sbin/nginx
-NAME=openresty
+NAME=nginx
 DESC=openresty
+
+if [ -r /etc/default/openresty ]; then
+        . /etc/default/openresty
+fi
 
 STOP_SCHEDULE="${STOP_SCHEDULE:-QUIT/5/TERM/5/KILL/5}"
 
@@ -22,7 +26,10 @@ test -x $DAEMON || exit 0
 . /lib/init/vars.sh
 . /lib/lsb/init-functions
 
-PID=/usr/local/openresty/nginx/logs/nginx.pid
+PID=$(cat /usr/local/openresty/nginx/conf/nginx.conf | grep -Ev '^\s*#' | awk 'BEGIN { RS="[;{}]" } { if ($1 == "pid") print $2 }' | head -n1)
+if [ -z "$PID" ]; then
+	PID=/usr/local/openresty/nginx/logs/nginx.pid
+fi
 
 start_nginx() {
 	# Start the daemon/service
