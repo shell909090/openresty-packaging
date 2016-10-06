@@ -30,7 +30,7 @@ Recommends: openresty-debug-resty
 Suggests: openresty-debug-restydoc
 Depends: ${shlibs:Depends}, ${misc:Depends},
  openresty-zlib, openresty-openssl-debug, openresty-pcre
-Description: core server of OpenResty for production use
+Description: debug version of OpenResty core server
  This package contains the debug version of the core server for OpenResty.
  Built for development purposes only.
  .
@@ -54,7 +54,7 @@ Package: openresty-debug-restydoc
 Section: utils
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: OpenResty documentation tool, restydoc
+Description: OpenResty documentation tool, restydoc - debug version
  This package contains the official OpenResty documentation index and
  the "restydoc" command-line utility for viewing it.
  .
@@ -69,5 +69,5 @@ Section: debug
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
  openresty-debug, openresty-debug-resty, openresty-debug-restydoc
-Description: Debug symbols of OpenResty packages
+Description: Debug symbols of OpenResty packages - debug version
  Debug symbols of OpenResty packages
