@@ -1,0 +1,27 @@
+Source: openresty-openssl-debug
+Section: libs
+Priority: optional
+Maintainer: OpenResty Team <openresty-en@googlegroups.com>
+Build-Depends: debhelper (>= 9), autotools-dev, openresty-zlib-dev, electric-fence
+Standards-Version: 3.9.8
+Homepage: http://zlib.net/
+
+Package: openresty-openssl-debug
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, openresty-zlib, electric-fence
+Description: Debug version of the OpenSSL library for OpenResty
+ This is the debug version of the OpenSSL library build for OpenResty uses.
+
+Package: openresty-openssl-debug-dev
+Section: libdevel
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, openresty-openssl-debug
+Description: Development files for OpenResty's OpenSSL library
+ Provides C header and static library for OpenResty's OpenSSL library.
+
+Package: openresty-openssl-debug-dbg
+Section: debug
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, openresty-openssl-debug, openresty-zlib-dbg
+Description: Debug symbols for OpenResty's OpenSSL library
+ Debug symbols for OpenResty's OpenSSL library.
