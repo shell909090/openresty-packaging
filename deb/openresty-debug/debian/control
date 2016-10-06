@@ -28,7 +28,7 @@ Architecture: any
 Recommends: openresty-debug-resty
 Suggests: openresty-debug-restydoc
 Depends: ${shlibs:Depends}, ${misc:Depends},
- openresty-zlib, openresty-debug-openssl, openresty-pcre
+ openresty-zlib, openresty-openssl-debug, openresty-pcre
 Description: core server of OpenResty for production use
  This package contains the debug version of the core server for OpenResty.
  Built for development purposes only.

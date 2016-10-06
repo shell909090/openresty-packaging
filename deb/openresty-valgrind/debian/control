@@ -2,9 +2,8 @@ Source: openresty-valgrind
 Section: httpd
 Priority: optional
 Maintainer: OpenResty Team <openresty-en@googlegroups.com>
-Build-Depends: debhelper (>= 9), autotools-dev, systemtap-sdt-dev,
- openresty-zlib-dev, openresty-openssl-debug-dev, openresty-pcre-dev,
- valgrind-devel
+Build-Depends: debhelper (>= 9), autotools-dev, systemtap-sdt-dev, valgrind,
+ openresty-zlib-dev, openresty-openssl-debug-dev, openresty-pcre-dev
 Standards-Version: 3.9.8
 Homepage: http://openresty.org/
 
@@ -29,7 +28,7 @@ Architecture: any
 Recommends: openresty-valgrind-resty
 Suggests: openresty-valgrind-restydoc
 Depends: ${shlibs:Depends}, ${misc:Depends}, valgrind,
- openresty-zlib, openresty-debug-openssl, openresty-pcre
+ openresty-zlib, openresty-openssl-debug, openresty-pcre
 Description: core server of OpenResty for production use
  This package contains the debug version of the core server for OpenResty.
  Built for development purposes only.
