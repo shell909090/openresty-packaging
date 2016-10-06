@@ -14,7 +14,7 @@ DESTDIR = $(CURDIR)/debian/tmp
 override_dh_auto_configure:
 	./configure \
 	  --with-debug \
-	  --with-cc-opt="-I/usr/local/openresty/zlib/include -I/usr/local/openresty/pcre/include -I/usr/local/openresty/openssl-debug/include" -O0 \
+	  --with-cc-opt="-I/usr/local/openresty/zlib/include -I/usr/local/openresty/pcre/include -I/usr/local/openresty/openssl-debug/include -O0" \
 	  --with-ld-opt="-L/usr/local/openresty/zlib/lib -L/usr/local/openresty/pcre/lib -L/usr/local/openresty/openssl-debug/lib -Wl,-rpath,/usr/local/openresty/zlib/lib:/usr/local/openresty/pcre/lib:/usr/local/openresty/openssl-debug/lib" \
 	  --with-pcre-jit \
 	  --without-http_rds_json_module \
