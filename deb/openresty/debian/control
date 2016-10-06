@@ -1,0 +1,70 @@
+Source: openresty
+Section: httpd
+Priority: optional
+Maintainer: OpenResty Team <openresty-en@googlegroups.com>
+Build-Depends: debhelper (>= 9), autotools-dev, systemtap-sdt-dev,
+ openresty-zlib-dev, openresty-openssl-dev, openresty-pcre-dev
+Standards-Version: 3.9.8
+Homepage: http://openresty.org/
+
+Package: openresty-resty
+Section: utils
+Architecture: all
+Suggests: openresty
+Depends: ${shlibs:Depends}, ${misc:Depends}, perl
+Description: resty command-line utility for OpenResty
+ This package contains the "resty" command-line utility for OpenResty, which
+ runs OpenResty Lua scripts on the terminal using a headless NGINX behind the
+ scene.
+ .
+ OpenResty is a full-fledged web platform by integrating the standard Nginx
+ core, LuaJIT, many carefully written Lua libraries, lots of high quality
+ 3rd-party Nginx modules, and most of their external dependencies. It is
+ designed to help developers easily build scalable web applications, web
+ services, and dynamic web gateways.
+
+Package: openresty
+Architecture: any
+Recommends: openresty-resty
+Suggests: openresty-restydoc
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ openresty-zlib, openresty-openssl, openresty-pcre
+Description: core server of OpenResty for production use
+ This package contains the core server for OpenResty. Built for production
+ uses.
+ .
+ OpenResty is a full-fledged web platform by integrating the standard Nginx
+ core, LuaJIT, many carefully written Lua libraries, lots of high quality
+ 3rd-party Nginx modules, and most of their external dependencies. It is
+ designed to help developers easily build scalable web applications, web
+ services, and dynamic web gateways.
+ .
+ By taking advantage of various well-designed Nginx modules (most of which
+ are developed by the OpenResty team themselves), OpenResty effectively
+ turns the nginx server into a powerful web app server, in which the web
+ developers can use the Lua programming language to script various existing
+ nginx C modules and Lua modules and construct extremely high-performance
+ web applications that are capable to handle 10K ~ 1000K+ connections in
+ a single box.
+
+Package: openresty-restydoc
+Section: utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: OpenResty documentation tool, restydoc
+ This package contains the official OpenResty documentation index and
+ the "restydoc" command-line utility for viewing it.
+ .
+ OpenResty is a full-fledged web platform by integrating the standard Nginx
+ core, LuaJIT, many carefully written Lua libraries, lots of high quality
+ 3rd-party Nginx modules, and most of their external dependencies. It is
+ designed to help developers easily build scalable web applications, web
+ services, and dynamic web gateways.
+
+Package: openresty-dbg
+Section: debug
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ openresty, openresty-resty, openresty-restydoc
+Description: Debug symbols of OpenResty packages
+ Debug symbols of OpenResty packages
