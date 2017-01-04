@@ -1,6 +1,6 @@
 Name:           openresty
-Version:        1.11.2.1
-Release:        3%{?dist}
+Version:        1.11.2.2
+Release:        8%{?dist}
 Summary:        OpenResty, scalable web platform by extending NGINX with Lua
 
 Group:          System Environment/Daemons
@@ -18,12 +18,14 @@ Source1:        openresty.init
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  gcc, make, perl, systemtap-sdt-devel
-BuildRequires:  openresty-zlib-devel >= 1.2.8
-BuildRequires:  openresty-openssl-devel >= 1.0.2h-5
-BuildRequires:  openresty-pcre-devel >= 8.39
-Requires:       openresty-zlib >= 1.2.8
+BuildRequires:  openresty-zlib-devel >= 1.2.8-1
+BuildRequires:  openresty-openssl-devel >= 1.0.2j-1
+BuildRequires:  openresty-pcre-devel >= 8.39-3
+BuildRequires:  GeoIP-devel
+Requires:       openresty-zlib >= 1.2.8-1
 Requires:       openresty-openssl >= 1.0.2h-5
-Requires:       openresty-pcre >= 8.39
+Requires:       openresty-pcre >= 8.39-3
+Requires:       GeoIP
 
 # for /sbin/service
 Requires(post):  chkconfig
@@ -60,7 +62,7 @@ a single box.
 
 Summary:        OpenResty command-line utility, resty
 Group:          Development/Tools
-Requires:       perl, openresty
+Requires:       perl, openresty >= %{version}-%{release}
 
 %if 0%{?fedora} >= 10 || 0%{?rhel} >= 6 || 0%{?centos} >= 6
 BuildArch:      noarch
@@ -102,14 +104,32 @@ designed to help developers easily build scalable web applications, web
 services, and dynamic web gateways.
 
 
+%package opm
+
+Summary:        OpenResty Package Manager
+Group:          Development/Tools
+Requires:       perl, openresty >= %{version}-%{release}, perl(Digest::MD5)
+Requires:       curl, tar, gzip
+#BuildRequires:  perl(Digest::MD5)
+
+%if 0%{?fedora} >= 10 || 0%{?rhel} >= 6 || 0%{?centos} >= 6
+BuildArch:      noarch
+%endif
+
+
+%description opm
+This package provides the client side tool, opm, for OpenResty Pakcage Manager (OPM).
+
+
 %prep
-%setup -q
+%setup -q -n "openresty-%{version}"
 
 #%patch0 -p1
 
 
 %build
 ./configure \
+    --prefix="%{orprefix}" \
     --with-cc-opt="-I%{zlib_prefix}/include -I%{pcre_prefix}/include -I%{openssl_prefix}/include" \
     --with-ld-opt="-L%{zlib_prefix}/lib -L%{pcre_prefix}/lib -L%{openssl_prefix}/lib -Wl,-rpath,%{zlib_prefix}/lib:%{pcre_prefix}/lib:%{openssl_prefix}/lib" \
     --with-pcre-jit \
@@ -129,6 +149,7 @@ services, and dynamic web gateways.
     --with-http_auth_request_module \
     --with-http_secure_link_module \
     --with-http_random_index_module \
+    --with-http_geoip_module \
     --with-http_gzip_static_module \
     --with-http_sub_module \
     --with-http_dav_module \
@@ -154,6 +175,7 @@ rm -rf %{buildroot}%{orprefix}/luajit/lib/libluajit-5.1.a
 mkdir -p %{buildroot}/usr/bin
 ln -sf %{orprefix}/bin/resty %{buildroot}/usr/bin/
 ln -sf %{orprefix}/bin/restydoc %{buildroot}/usr/bin/
+ln -sf %{orprefix}/bin/opm %{buildroot}/usr/bin/
 ln -sf %{orprefix}/nginx/sbin/nginx %{buildroot}/usr/bin/%{name}
 
 mkdir -p %{buildroot}/etc/init.d
@@ -213,7 +235,25 @@ fi
 %{orprefix}/resty.index
 
 
+%files opm
+%defattr(-,root,root,-)
+
+/usr/bin/opm
+%{orprefix}/bin/opm
+%{orprefix}/site/manifest/
+%{orprefix}/site/pod/
+
+
 %changelog
+* Sat Dec 24 2016 Yichun Zhang
+- init script: explicity specify the runlevels 345.
+* Wed Dec 14 2016 Yichun Zhang
+- opm missing runtime dependencies curl, tar, and gzip.
+- enabled http_geoip_module by default.
+* Fri Nov 25 2016 Yichun Zhang
+- opm missing runtime dependency perl(Digest::MD5)
+* Thu Nov 17 2016 Yichun Zhang
+- upgraded OpenResty to 1.11.2.2.
 * Fri Aug 26 2016 Yichun Zhang
 - use dual number mode in our luajit builds which should usually
 be faster for web application use cases.
@@ -221,7 +261,7 @@ be faster for web application use cases.
 - bump OpenResty version to 1.11.2.1.
 * Tue Aug 23 2016 zxcvbn4038
 - use external packages openresty-zlib and openresty-pcre through dynamic linking.
-* Sun Jul 14 2016 Yichun Zhang
+* Thu Jul 14 2016 Yichun Zhang
 - enabled more nginx standard modules as well as threads and file aio.
 * Sun Jul 10 2016 makerpm
 - initial build for OpenResty 1.9.15.1.

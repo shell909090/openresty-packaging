@@ -1,6 +1,6 @@
 Name:               openresty-openssl
-Version:            1.0.2i
-Release:            1%{?dist}
+Version:            1.0.2j
+Release:            3%{?dist}
 Summary:            OpenSSL library for OpenResty
 
 Group:              Development/Libraries
@@ -14,7 +14,7 @@ Patch0:             https://raw.githubusercontent.com/openresty/openresty/master
 
 BuildRoot:          %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:      gcc, make
+BuildRequires:      gcc, make, perl
 BuildRequires:      openresty-zlib-devel >= 1.2.8
 Requires:           openresty-zlib >= 1.2.8
 
@@ -51,7 +51,7 @@ Provides C header and static library for OpenResty's OpenSSL library.
     --libdir=lib \
     -I%{zlib_prefix}/include \
     -L%{zlib_prefix}/lib \
-    -Wl,-rpath,%{zlib_prefix}/lib
+    -Wl,-rpath,%{zlib_prefix}/lib:%{openssl_prefix}/lib
 
 make %{?_smp_mflags}
 
@@ -91,6 +91,11 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Fri Nov 25 2016 Yichun Zhang (agentzh)
+- added perl to the BuildRequires list.
+* Tue Oct  4 2016 Yichun Zhang (agentzh)
+- fixed the rpath of libssl.so (we should have linked against
+our own libcrypto.so).
 * Sat Sep 24 2016 Yichun Zhang (agentzh)
 - upgrade to OpenSSL 1.0.2i.
 * Tue Aug 23 2016 zxcvbn4038

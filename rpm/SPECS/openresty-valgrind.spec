@@ -1,6 +1,6 @@
 Name:           openresty-valgrind
-Version:        1.11.2.1
-Release:        2%{?dist}
+Version:        1.11.2.2
+Release:        3%{?dist}
 Summary:        The Valgrind debug version of OpenResty
 
 Group:          System Environment/Daemons
@@ -18,12 +18,14 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  gcc, make, perl, valgrind-devel, systemtap-sdt-devel
 Requires:       valgrind
 
-BuildRequires:  openresty-zlib-devel >= 1.2.8
-BuildRequires:  openresty-openssl-debug-devel >= 1.0.2h-6
-BuildRequires:  openresty-pcre-devel >= 8.39
-Requires:       openresty-zlib >= 1.2.8
-Requires:       openresty-openssl-debug >= 1.0.2h-6
-Requires:       openresty-pcre >= 8.39
+BuildRequires:  openresty-zlib-devel >= 1.2.8-1
+BuildRequires:  openresty-openssl-debug-devel >= 1.0.2j-1
+BuildRequires:  openresty-pcre-devel >= 8.39-3
+BuildRequires:  GeoIP-devel
+Requires:       openresty-zlib >= 1.2.8-1
+Requires:       openresty-openssl-debug >= 1.0.2j-1
+Requires:       openresty-pcre >= 8.39-3
+Requires:       GeoIP
 
 AutoReqProv:        no
 
@@ -81,6 +83,7 @@ a single box.
     --with-http_auth_request_module \
     --with-http_secure_link_module \
     --with-http_random_index_module \
+    --with-http_geoip_module \
     --with-http_gzip_static_module \
     --with-http_sub_module \
     --with-http_dav_module \
@@ -108,6 +111,7 @@ rm -rf %{buildroot}%{orprefix}/bin/resty
 rm -rf %{buildroot}%{orprefix}/bin/restydoc
 rm -rf %{buildroot}%{orprefix}/bin/restydoc-index
 rm -rf %{buildroot}%{orprefix}/bin/md2pod.pl
+rm -rf %{buildroot}%{orprefix}/bin/opm
 rm -rf %{buildroot}%{orprefix}/bin/nginx-xml2pod
 rm -rf %{buildroot}%{orprefix}/pod/*
 rm -rf %{buildroot}%{orprefix}/resty.index
@@ -139,6 +143,10 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Dec 14 2016 Yichun Zhang
+- enabled http_geoip_module by default.
+* Thu Nov 17 2016 Yichun Zhang
+- upgraded OpenResty to 1.11.2.2.
 * Fri Aug 26 2016 Yichun Zhang
 - use dual number mode in our luajit builds which should usually
 be faster for web application use cases.
@@ -146,7 +154,7 @@ be faster for web application use cases.
 - bump OpenResty version to 1.11.2.1.
 * Tue Aug 23 2016 zxcvbn4038
 - use external packages openresty-zlib and openresty-pcre through dynamic linking.
-* Sun Jul 14 2016 Yichun Zhang
+* Thu Jul 14 2016 Yichun Zhang
 - enabled more nginx standard modules as well as threads and file aio.
 * Sun Jul 10 2016 makerpm
 - initial build for OpenResty 1.9.15.1.
