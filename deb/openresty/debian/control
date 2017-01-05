@@ -11,8 +11,9 @@ Homepage: http://openresty.org/
 Package: openresty-resty
 Section: utils
 Architecture: all
-Suggests: openresty
-Depends: ${shlibs:Depends}, ${misc:Depends}, perl
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ openresty (>= ${source:Upstream-Version}),
+ perl
 Description: resty command-line utility for OpenResty
  This package contains the "resty" command-line utility for OpenResty, which
  runs OpenResty Lua scripts on the terminal using a headless NGINX behind the
