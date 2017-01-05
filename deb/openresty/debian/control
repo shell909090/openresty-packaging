@@ -3,7 +3,7 @@ Section: httpd
 Priority: optional
 Maintainer: OpenResty Team <openresty-en@googlegroups.com>
 Build-Depends: debhelper (>= 9), autotools-dev, dh-systemd,
- systemtap-sdt-dev,
+ systemtap-sdt-dev, libdigest-perl-md5-perl,
  openresty-zlib-dev, openresty-openssl-dev, openresty-pcre-dev
 Standards-Version: 3.9.8
 Homepage: http://openresty.org/
@@ -24,9 +24,26 @@ Description: resty command-line utility for OpenResty
  designed to help developers easily build scalable web applications, web
  services, and dynamic web gateways.
 
+Package: openresty-opm
+Section: utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+ openresty (>= ${source:Upstream-Version}),
+ curl,
+ libdigest-perl-md5-perl
+Description: OpenResty Package Manager (OPM)
+ This package provides the client side tool, opm, for OpenResty Pakcage Manager
+ (OPM).
+ .
+ OpenResty is a full-fledged web platform by integrating the standard Nginx
+ core, LuaJIT, many carefully written Lua libraries, lots of high quality
+ 3rd-party Nginx modules, and most of their external dependencies. It is
+ designed to help developers easily build scalable web applications, web
+ services, and dynamic web gateways.
+
 Package: openresty
 Architecture: any
-Recommends: openresty-resty
+Recommends: openresty-resty, openresty-opm
 Suggests: openresty-restydoc
 Depends: ${shlibs:Depends}, ${misc:Depends},
  openresty-zlib, openresty-openssl, openresty-pcre

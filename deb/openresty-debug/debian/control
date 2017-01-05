@@ -3,7 +3,7 @@ Section: httpd
 Priority: optional
 Maintainer: OpenResty Team <openresty-en@googlegroups.com>
 Build-Depends: debhelper (>= 9), autotools-dev, dh-systemd,
- systemtap-sdt-dev,
+ systemtap-sdt-dev, libdigest-perl-md5-perl,
  openresty-zlib-dev, openresty-openssl-debug-dev, openresty-pcre-dev
 Standards-Version: 3.9.8
 Homepage: http://openresty.org/
