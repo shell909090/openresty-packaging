@@ -2,3 +2,11 @@
 *.bak
 *.swp
 *.swo
+
+*.deb
+*.gz
+*.xz
+*.bz2
+*.dsc
+*.build
+*.changes
