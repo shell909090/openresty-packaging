@@ -36,11 +36,11 @@ clean-openssl:
 	find openresty-openssl-debug -maxdepth 1 ! -name 'debian' ! -name 'openresty-openssl-debug' -print | xargs rm -rf
 
 download-pcre:
-	wget 'https://ftp.pcre.org/pub/pcre/pcre-8.39.tar.bz2'
-	ln -s pcre-8.39.tar.bz2 openresty-pcre_8.39.orig.tar.bz2
+	wget 'https://ftp.pcre.org/pub/pcre/pcre-8.40.tar.bz2'
+	ln -s pcre-8.40.tar.bz2 openresty-pcre_8.40.orig.tar.bz2
 
 build-pcre:
-	tar xf openresty-pcre_8.39.orig.tar.bz2 --strip-components=1 -C openresty-pcre
+	tar xf openresty-pcre_8.40.orig.tar.bz2 --strip-components=1 -C openresty-pcre
 	-cd openresty-pcre; debuild
 
 clean-pcre:

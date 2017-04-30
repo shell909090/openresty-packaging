@@ -1,3 +1,9 @@
+openresty-pcre (8.40-1~xenial1) xenial; urgency=low
+
+  * Upstream update
+
+ -- OpenResty Team <openresty-en@googlegroups.com>  Sun, 30 Apr 2017 23:08:33 +0800
+
 openresty-pcre (8.39-1~xenial1) xenial; urgency=low
 
   * Initial release
