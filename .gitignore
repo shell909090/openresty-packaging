@@ -9,4 +9,5 @@
 *.bz2
 *.dsc
 *.build
+*.buildinfo
 *.changes

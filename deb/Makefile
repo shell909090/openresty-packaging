@@ -7,11 +7,11 @@
 
 
 download-zlib:
-	wget 'http://www.zlib.net/fossils/zlib-1.2.8.tar.gz'
-	ln -s zlib-1.2.8.tar.gz openresty-zlib_1.2.8.dfsg.orig.tar.gz
+	wget 'http://www.zlib.net/fossils/zlib-1.2.11.tar.gz'
+	ln -s zlib-1.2.11.tar.gz openresty-zlib_1.2.11.dfsg.orig.tar.gz
 
 build-zlib:
-	tar xf openresty-zlib_1.2.8.dfsg.orig.tar.gz --strip-components=1 -C openresty-zlib
+	tar xf openresty-zlib_1.2.11.dfsg.orig.tar.gz --strip-components=1 -C openresty-zlib
 	cd openresty-zlib; debuild
 
 clean-zlib:
