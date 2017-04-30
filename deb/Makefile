@@ -48,16 +48,21 @@ clean-pcre:
 	find openresty-pcre -maxdepth 1 ! -name 'debian' ! -name 'openresty-pcre' -print | xargs rm -rf
 
 download-openresty:
-	wget 'https://openresty.org/download/openresty-1.11.2.2.tar.gz'
-	ln -s openresty-1.11.2.2.tar.gz openresty_1.11.2.2.orig.tar.gz
+	wget 'https://openresty.org/download/openresty-1.11.2.3.tar.gz'
+	ln -s openresty-1.11.2.3.tar.gz openresty_1.11.2.3.orig.tar.gz
+	ln -s openresty-1.11.2.3.tar.gz openresty-debug_1.11.2.3.orig.tar.gz
 
 build-openresty:
-	tar xf openresty_1.11.2.2.orig.tar.gz --strip-components=1 -C openresty
+	tar xf openresty_1.11.2.3.orig.tar.gz --strip-components=1 -C openresty
 	-cd openresty; debuild
+	tar xf openresty-debug_1.11.2.3.orig.tar.gz --strip-components=1 -C openresty-debug
+	-cd openresty-debug; debuild
 
 clean-openresty:
 	cd openresty; debclean
 	find openresty -maxdepth 1 ! -name 'debian' ! -name 'openresty' -print | xargs rm -rf
+	cd openresty-debug; debclean
+	find openresty-debug -maxdepth 1 ! -name 'debian' ! -name 'openresty-debug' -print | xargs rm -rf
 
 
 ### Makefile ends here

@@ -1,3 +1,9 @@
+openresty (1.11.2.3-1~xenial1) xenial; urgency=low
+
+  * Upstream update
+
+ -- OpenResty Team <openresty-en@googlegroups.com>  Mon, 01 May 2017 01:51:26 +0800
+
 openresty (1.11.2.2-1~xenial1) xenial; urgency=low
 
   * Initial release
