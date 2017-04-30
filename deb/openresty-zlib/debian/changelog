@@ -1,4 +1,4 @@
-openresty-zlib (1.2.11.dfsg-1~xenial1) xenial; urgency=medium
+openresty-zlib (1.2.11.dfsg-1~xenial1) xenial; urgency=low
 
   * Upstream update
 

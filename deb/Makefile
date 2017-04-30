@@ -19,11 +19,11 @@ clean-zlib:
 	find openresty-zlib -maxdepth 1 ! -name 'debian' ! -name 'openresty-zlib' -print | xargs rm -rf
 
 download-openssl:
-	wget 'https://www.openssl.org/source/old/1.0.2/openssl-1.0.2j.tar.gz'
-	ln -s openssl-1.0.2j.tar.gz openresty-openssl_1.0.2j.orig.tar.gz
+	wget 'https://www.openssl.org/source/openssl-1.0.2k.tar.gz'
+	ln -s openssl-1.0.2k.tar.gz openresty-openssl_1.0.2k.orig.tar.gz
 
 build-openssl:
-	tar xf openresty-openssl_1.0.2j.orig.tar.gz --strip-components=1 -C openresty-openssl
+	tar xf openresty-openssl_1.0.2k.orig.tar.gz --strip-components=1 -C openresty-openssl
 	cd openresty-openssl; debuild
 
 clean-openssl:
