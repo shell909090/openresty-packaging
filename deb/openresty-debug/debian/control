@@ -8,22 +8,6 @@ Build-Depends: debhelper (>= 9), autotools-dev, dh-systemd,
 Standards-Version: 3.9.8
 Homepage: http://openresty.org/
 
-Package: openresty-debug-resty
-Section: utils
-Architecture: all
-Suggests: openresty-debug
-Depends: ${shlibs:Depends}, ${misc:Depends}, perl
-Description: resty command-line utility for OpenResty - debug version
- This package contains the "resty" command-line utility for OpenResty, which
- runs OpenResty Lua scripts on the terminal using a headless NGINX behind the
- scene.
- .
- OpenResty is a full-fledged web platform by integrating the standard Nginx
- core, LuaJIT, many carefully written Lua libraries, lots of high quality
- 3rd-party Nginx modules, and most of their external dependencies. It is
- designed to help developers easily build scalable web applications, web
- services, and dynamic web gateways.
-
 Package: openresty-debug
 Architecture: any
 Recommends: openresty-debug-resty
@@ -49,20 +33,6 @@ Description: debug version of OpenResty core server
  nginx C modules and Lua modules and construct extremely high-performance
  web applications that are capable to handle 10K ~ 1000K+ connections in
  a single box.
-
-Package: openresty-debug-restydoc
-Section: utils
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: OpenResty documentation tool, restydoc - debug version
- This package contains the official OpenResty documentation index and
- the "restydoc" command-line utility for viewing it.
- .
- OpenResty is a full-fledged web platform by integrating the standard Nginx
- core, LuaJIT, many carefully written Lua libraries, lots of high quality
- 3rd-party Nginx modules, and most of their external dependencies. It is
- designed to help developers easily build scalable web applications, web
- services, and dynamic web gateways.
 
 Package: openresty-debug-dbg
 Section: debug
